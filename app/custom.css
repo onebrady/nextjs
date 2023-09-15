@@ -1,0 +1,5 @@
+img.root-bg {
+    height:100vh;
+    object-fit:cover;
+    width:100vw;
+}

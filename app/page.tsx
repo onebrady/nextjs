@@ -3,10 +3,17 @@ import PricingSection from './PricingSection'
 
 function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <PricingSection />
+    
+      <Image
+      alt="background"
+      src="/images/Background.jpg"
+      width={2560}
+      height={1440}
+      className='root-bg'
+      />
 
-    </main>
+
+    
   )
 }
 
