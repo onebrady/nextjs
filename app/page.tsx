@@ -1,9 +1,9 @@
 import Image from 'next/image'
-import PricingSection from './PricingSection'
+import App from './app'
 
 function Home() {
   return (
-    
+    <>
       <Image
       alt="background"
       src="/images/Background.jpg"
@@ -11,7 +11,8 @@ function Home() {
       height={1440}
       className='root-bg'
       />
-
+      <App />
+      </>
 
     
   )
