@@ -1,22 +1,15 @@
-import Image from 'next/image'
-import App from './app'
+import Image from "next/image";
+import App from "./app";
+import GetImage from "./components/images";
 
 function Home() {
   return (
     <>
-      <Image
-      alt="background"
-      src="/images/Background.jpg"
-      width={2560}
-      height={1440}
-      className='root-bg'
-      sizes='(max-width:768px) 100vw, (max-width:1919px) 1920px'
-      />
+      <GetImage photoUrl="/images/Background.jpg" />
+      <GetImage photoUrl="/images/SVB_170_Bare_van_v01_0067.png" />
       <App />
-      </>
-
-    
-  )
+    </>
+  );
 }
 
 export default Home;

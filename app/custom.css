@@ -1,24 +1,25 @@
 img.root-bg {
     height:100vh;
     object-fit:cover;
-    width:100vw;
+    width:calc(100vw - 24rem);
 }
 main.navigation {
     position:absolute;
     top:0;
+    right:0;
     height:100vh;
-    width:320px;
+    width:24rem;
    display:flex;
    justify-content:center;
    align-items:center;
 }
 main.navigation section.left-nav {
     background-color:rgba(255,255,255,1);
-    height:90%;
+    height:100%;
     padding:15px;
     width:100%;
     position:relative;
-    border-radius:0 20px 20px 0;
+
 }
 .nav-header {
     width: calc(100% + 30px);
@@ -33,4 +34,12 @@ main.navigation section.left-nav {
     align-items: center;
     border-radius: 0 20px 0 0;
     font-weight: bold;
+}
+.mainBody {
+    position:relative;
+}
+.mainBody img {
+    position:absolute;
+    top:0;
+    left:0;
 }

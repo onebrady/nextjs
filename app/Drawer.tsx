@@ -1,12 +1,21 @@
 import React from "react";
+import Card from "./Card";
 
 type DrawerProps = {
   children: React.ReactNode;
   isOpen: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  step: number;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export default function Drawer({ children, isOpen, setIsOpen }: DrawerProps) {
+export default function Drawer({
+  children,
+  isOpen,
+  setIsOpen,
+  step,
+  setStep,
+}: DrawerProps) {
   return (
     <main
       className={
@@ -24,7 +33,12 @@ export default function Drawer({ children, isOpen, setIsOpen }: DrawerProps) {
       >
         <article className="relative w-screen max-w-sm pb-10 flex flex-col space-y-6 overflow-y-scroll h-full">
           <header className="p-4 font-bold text-lg">Header</header>
-          {children}
+          <Card
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            step={step}
+            setStep={setStep}
+          />
         </article>
       </section>
       <section
