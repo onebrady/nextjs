@@ -1,0 +1,55 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+.main-bg {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.top-50 {
+  z-index: 50;
+}
+.bottom-steps {
+  bottom: 15px;
+  position: absolute;
+}
+.MuiPaper-root {
+  position: relative;
+  z-index: 999;
+}
+.MuiToolTip-popper {
+  position: relative;
+  z-index: 9999;
+}
+.card-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 35px;
+}
