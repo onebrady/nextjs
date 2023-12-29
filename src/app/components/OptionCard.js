@@ -17,6 +17,10 @@ import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
+import ArrowCircleLeftIcon from "@mui/icons-material/ArrowCircleLeft";
+import ArrowCircleRightIcon from "@mui/icons-material/ArrowCircleRight";
+import Typography from "@mui/material/Typography";
+import LinearWithValueLabel from "./progressBar";
 
 export default function OptionCard({
   options,
@@ -33,6 +37,7 @@ export default function OptionCard({
   walls,
   insulation,
   trim,
+  stepName,
 }) {
   // Function to group options by 'optionGroups.name'
   const groupOptions = (options) => {
@@ -45,7 +50,7 @@ export default function OptionCard({
       return acc;
     }, {});
   };
-  //  console.log(floorOption.name);
+  console.log(onSelectItem);
   const groupedOptions = groupOptions(options);
   const groupNames = Object.keys(groupedOptions);
   const [selectedOption, setSelectedOption] = useState("");
@@ -88,17 +93,24 @@ export default function OptionCard({
   return (
     <>
       {groupedOptions && groupNames.length > 0 && (
-        <Card sx={{ maxWidth: 400 }}>
-          <CardHeader
-            avatar={
-              <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-                1
-              </Avatar>
-            }
-            title={groupNames[currentGroupIndex]}
-          />
-
+        <Card
+          className="optionCard"
+          sx={{ maxWidth: 375, marginTop: 2, borderRadius: "0 10px 10px 0" }}
+        >
           <CardContent>
+            <LinearWithValueLabel />
+            <Typography sx={{ fontSize: 14 }} gutterBottom>
+              {stepName}
+            </Typography>
+            <Typography
+              sx={{ paddingBottom: "30px" }}
+              variant="h5"
+              component="div"
+              gutterBottom
+            >
+              {groupNames[currentGroupIndex]}
+            </Typography>
+
             <FormControl>
               <FormLabel id="demo-radio-buttons-group-label"></FormLabel>
 
@@ -135,30 +147,21 @@ export default function OptionCard({
             {groupNames.length > 1 && (
               <>
                 <div className="card-buttons">
-                  <button
+                  <IconButton
+                    aria-label="ArrowCircleLeftIcon"
                     onClick={showPreviousGroup}
                     disabled={currentGroupIndex === 0}
                   >
-                    Previous Group
-                  </button>
-                  <button
+                    <ArrowCircleLeftIcon />
+                  </IconButton>
+                  <IconButton
+                    aria-label="ArrowCircleRightIcon"
                     onClick={showNextGroup}
                     disabled={currentGroupIndex === groupNames.length - 1}
                   >
-                    Next Group
-                  </button>
+                    <ArrowCircleRightIcon />
+                  </IconButton>
                 </div>
-                <Box className="top-50 " sx={{ width: "100%" }}>
-                  <Stepper activeStep={currentGroupIndex} alternativeLabel>
-                    {Object.entries(groupedOptions).map(
-                      ([groupName, options]) => (
-                        <Step key={groupName}>
-                          <StepLabel>{groupName}</StepLabel>
-                        </Step>
-                      )
-                    )}
-                  </Stepper>
-                </Box>
               </>
             )}
           </CardContent>

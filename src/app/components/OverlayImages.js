@@ -8,10 +8,10 @@ const OverlayImages = ({ vanimage }) => {
         <Image
           src={vanimage}
           alt="Van image"
-          layout="fill" // This makes the image fill its container
-          objectFit="cover" // Adjust as needed, e.g., 'contain', 'cover', etc.
+          fill={true} // This makes the image fill its container
           quality={75} // Adjust quality as needed, lower values can improve performance
           priority // Optional: Use this to prioritize the loading of this image (e.g., for above-the-fold content)
+          style={{ objectFit: "cover" }}
         />
       </>
     );

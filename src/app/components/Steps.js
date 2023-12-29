@@ -24,6 +24,8 @@ const VanSteps = ({ steps, selectedVan }) => {
       prevIndex > 0 ? prevIndex - 1 : prevIndex
     );
   };
+  const [stepName, setStepName] = useState(0);
+  const [stepper, setStepper] = useState(0);
   const [runningOptions, setRunningOptions] = useState([]);
   const [floorOption, setFloorOption] = useState([]);
   const [wiringHarness, setWiringHarness] = useState([]);
@@ -120,33 +122,26 @@ const VanSteps = ({ steps, selectedVan }) => {
 
   return (
     <>
-      <Box className="top-50 bottom-steps" sx={{ width: "100%" }}>
-        <Stepper activeStep={1} alternativeLabel>
-          {steps.map((item) => (
-            <Step
-              onClick={(e) => {
-                vanOptions(item.id);
-              }}
-              key={item.id}
-            >
-              <StepLabel>{item.name}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-      </Box>
-      <div className="flex top-50 relative">
-        {steps.map((item) => (
-          <button
-            onClick={(e) => {
-              vanOptions(item.id);
-              setCurrentGroupIndex(0);
-            }}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
-            key={item.id}
-          >
-            {item.name}
-          </button>
-        ))}
+      <div className="stepper-top flex top-50 relative py-5 justify-center items-center">
+        <Box sx={{ width: "50%" }}>
+          <Stepper activeStep={stepper} alternativeLabel>
+            {steps.map((item, index) => (
+              <Step
+                onClick={(e) => {
+                  vanOptions(item.id);
+                  setCurrentGroupIndex(0);
+                  setStepper(index);
+                  setStepName(item.name);
+                }}
+                key={item.id}
+              >
+                <StepLabel className={stepper == index ? "activestep" : ""}>
+                  {item.name}
+                </StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+        </Box>
       </div>
       <OptionCard
         options={options}
@@ -163,6 +158,7 @@ const VanSteps = ({ steps, selectedVan }) => {
         walls={walls}
         insulation={insulation}
         trim={trim}
+        stepName={stepName}
       />
       <OverlayImages vanimage={floorOptionImage} />
       <OverlayImages vanimage={wiringHarnessImage} />
